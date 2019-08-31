@@ -1,4 +1,4 @@
-# NodeJS with JWT Authentication
+# NodeJS + Express + MongoDB with JWT Authentication
 
 Produces random hash with jwt in simple level and log hash operations using monolog.
 

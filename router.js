@@ -5,6 +5,6 @@ const clients = require("./controller/client");
 
 router.post('/login', clients.login);
 router.post('/register', clients.register);
-//router.get('/hash', clients.test);
+router.get('/hash', [VerifyToken, clients.hash]);
 
 module.exports = router;

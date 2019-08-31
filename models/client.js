@@ -46,3 +46,9 @@ exports.register = function (req, res, next) {
         });
     });
 };
+
+exports.hash = function (req, res, next) {
+    return new Promise(function (resolve) {
+        resolve({ status: "OK" });
+    });
+};

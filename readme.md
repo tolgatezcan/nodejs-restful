@@ -11,7 +11,7 @@ Produces random hash with jwt in simple level and log hash operations using mono
 - Create a table from the `users` name in the database (Includes email and password fields)
 
 #### Run a NodeJS built in server from your root project
-
+ 
 ```sh
 node server.js
 ```

@@ -15,7 +15,7 @@ Produces random hash with jwt in simple level and log hash operations using mono
 ```sh
 node server.js
 ```
-or PM2
+or run with PM2
 ```sh
 pm2 start process.json
 ```
@@ -23,41 +23,41 @@ pm2 start process.json
 #### Register Request (POST Method):
 
 ```sh
-curl -i http://localhost:8000/register -d email=web@web.com -d password=123
+curl -i http://localhost:8080/register -d email=web@web.com -d password=123
 ```
 
 #### Register Response:
 
 ```
 {
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvbG9naW4iLCJpYXQiOjE1NTc2NzA3NTMsImV4cCI6MTU1NzY3NDM1MywibmJmIjoxNTU3NjcwNzUzLCJqdGkiOiJSNnNnWmF6TGZCZjdYREhWIiwic3ViIjoxNSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.GHygZdoPweMeuvz6AdpCmRIdjdmj1hSEJVZUAGzPalE"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJlbWFpbCI6IndlYjNAd2ViLmNvbSIsInBhc3N3b3JkIjoiMTIzNDU2IiwiX2lkIjoiNWQ2YWI1MWMzNGFjZjcyOTI0NWRkMmFlIn1dLCJpYXQiOjE1NjcyNzQyNjgsImV4cCI6MTU2NzI3NjA2OH0.MKn6qnoOz0dUl3RJjUlE8KVJiHXyFTCemxdvLgiyOPk"
 }
 ```
 
 #### Login Request (POST Method):
 
 ```sh
-curl -i http://localhost:8000/login -d email=web@web.com -d password=123
+curl -i http://localhost:8080/login -d email=web@web.com -d password=123
 ```
 
 #### Login Response:
 
 ```
 {
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvbG9naW4iLCJpYXQiOjE1NTc2NzA3NTMsImV4cCI6MTU1NzY3NDM1MywibmJmIjoxNTU3NjcwNzUzLCJqdGkiOiJSNnNnWmF6TGZCZjdYREhWIiwic3ViIjoxNSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.GHygZdoPweMeuvz6AdpCmRIdjdmj1hSEJVZUAGzPalE"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjVkNmFiNTFjMzRhY2Y3MjkyNDVkZDJhZSIsImVtYWlsIjoid2ViM0B3ZWIuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYifSwiaWF0IjoxNTY3Mjc0Mjg5LCJleHAiOjE1NjcyNzYwODl9.ct642RKtFiVR-zHLeMZUiujiDxy8k2EMpD5dRDigJC0"
 }
 ```
 
 #### Hast Request (GET Method):
 
 ```sh
-curl -H "Authorization: Bearer <token>" http://localhost:8000/hash
+curl -H "Authorization: Bearer <token>" http://localhost:8080/hash
 ```
 
 #### Hash Response:
 
 ```
 {
-  "hash": "03669a578e1c8a128ab29b1465ef8f21"
+  "hash": "63da997f34e3bc4ef63ccec126665bc6d9f99b55"
 }
 ```

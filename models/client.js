@@ -4,8 +4,8 @@ const fs = require('fs');
 const moment = require('moment');
 const dotenv = require("dotenv").config(); //.env setting
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017';
-const dbName = 'restful';
+const url = process.env.DB_URL;
+const dbName = process.env.DB_NAME;
 
 exports.login = function (req, res, next) {
     return new Promise(function (resolve, reject) {

@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 const dbName = 'restful';
@@ -49,6 +50,9 @@ exports.register = function (req, res, next) {
 
 exports.hash = function (req, res, next) {
     return new Promise(function (resolve) {
-        resolve({ status: "OK" });
+        var current_date = (new Date()).valueOf().toString();
+        var random = Math.random().toString();
+        var hash = crypto.createHash('sha1').update(current_date + random).digest('hex');
+        resolve({ hash: hash });
     });
 };

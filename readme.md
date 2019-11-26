@@ -12,7 +12,7 @@ Produces random hash with jwt in simple level and log hash operations using mono
 
 #### Run a NodeJS built in server from your root project
  
-```sh
+```sh 
 node server.js
 ```
 or run with PM2

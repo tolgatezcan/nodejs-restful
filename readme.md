@@ -17,7 +17,7 @@ node server.js
 ```
 or run with PM2
 ```sh
-pm2 start process.json
+pm2 start process.json 
 ```
 
 #### Register Request (POST Method):

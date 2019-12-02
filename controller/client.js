@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
-const client = require('../models/client');
+const moment = require('moment');
+const crypto = require('crypto');
+const fs = require('fs');
 const User = require('../models/User');
 
 exports.login = async function (req, res, next) {
@@ -39,11 +41,12 @@ exports.register = async function (req, res, next) {
     }
 };
 
-exports.hash = function (request, response, next) {
-    client.hash(request, response, next).then(function (data) {
-        response.status(200).json(data);
-    })
-    .catch(function (err) {
-        response.status(500).json(err);
-    });
+exports.hash = function (req, res, next) {
+    const current_date = moment().format("YYYY-MM-DD HH:mm:ss");
+    const random = Math.random().toString();
+    const hash = crypto.createHash('sha1').update(current_date + random).digest('hex');
+    const filename = __dirname + "/../" + process.env.LOGFILE;
+    const log_file  = fs.createWriteStream(filename, { flags: "a" });
+    log_file.write("["+current_date+"]" + " HASH.INFO: " + hash + '\n');
+    res.json({ hash: hash });
 };

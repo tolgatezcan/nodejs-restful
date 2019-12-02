@@ -1,18 +1,19 @@
 const express = require('express');
 const mongosee = require('mongoose');
 const bodyParser = require('body-parser');
-const dotenv = require("dotenv").config(); //.env setting
+const cors = require('cors');
 const router = require("./router");
 const app = express();
+require('dotenv/config');
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/', router);
 
 // 404 Not Found
 app.use(function(req, res, next) {
-    res.status(404).send({error: 'Not Found'});
-    res.end();
+    res.json({message: 'Invalid method'});
 });
 
 // Connect To MongoDB

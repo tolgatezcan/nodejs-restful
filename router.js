@@ -1,10 +1,10 @@
 const express = require("express"); 
 const router = express.Router();
 const VerifyToken = require("./models/VerifyToken");
-const clients = require("./controller/client");
+const post = require("./controller/post");
 
-router.post('/login', clients.login);
-router.post('/register', clients.register);
-router.get('/hash', [VerifyToken, clients.hash]);
+router.post('/login', post.login);
+router.post('/register', post.register);
+router.get('/hash', [VerifyToken, post.hash]);
 
 module.exports = router;

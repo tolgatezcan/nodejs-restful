@@ -9,7 +9,7 @@ const {registerValidation} = require('../models/Validation');
 
 exports.login = async function (req, res, next) {
 
-    // Login validate
+    // Login validatee
     const {error} = loginValidation(req.body);
     if (error) res.status(400).json({message: error.details[0].message});
     else {

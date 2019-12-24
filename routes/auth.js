@@ -1,10 +1,14 @@
 const express = require("express"); 
 const router = express.Router();
-const VerifyToken = require("../models/VerifyToken");
-const post = require("../controller/post");
 
-router.post('/login', post.login);
-router.post('/register', post.register);
-router.get('/hash', [VerifyToken, post.hash]);
+// Import Controller UserAuth
+const userAuth = require("../controller/UserAuth");
+
+// Import VerifyToken Model
+const verifyToken = require("../models/VerifyToken");
+
+router.post('/login', userAuth.login);
+router.post('/register', userAuth.register);
+router.get('/hash', [verifyToken, userAuth.hash]);
 
 module.exports = router;

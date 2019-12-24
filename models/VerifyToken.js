@@ -6,7 +6,7 @@ function verifyToken (req, res, next) {
         var token = authHeader.substring(7, authHeader.length);
     }
     try {
-        jwt.verify(token, 'secret');
+        jwt.verify(token, process.env.SECRET);
         next();
     } catch(err) {
         return res.json({ message: "Unauthorized!" });

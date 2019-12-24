@@ -64,12 +64,12 @@ exports.register = async function (req, res, next) {
     }
 };
 
-exports.hash = function (req, res, next) {
-    const current_date = moment().format("YYYY-MM-DD HH:mm:ss");
-    const random = Math.random().toString();
-    const hash = crypto.createHash('sha1').update(current_date + random).digest('hex');
+exports.hash = async function (req, res, next) {
+    const current_date = await moment().format("YYYY-MM-DD HH:mm:ss");
+    const random = await Math.random().toString();
+    const hash = await crypto.createHash('sha1').update(current_date + random).digest('hex');
     const filename = __dirname + "/../" + process.env.LOGFILE;
-    const log_file  = fs.createWriteStream(filename, { flags: "a" });
+    const log_file  = await fs.createWriteStream(filename, { flags: "a" });
     log_file.write("["+current_date+"]" + " HASH.INFO: " + hash + '\n');
     res.json({ hash: hash });
 };

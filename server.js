@@ -1,15 +1,19 @@
 const express = require('express');
+const app = express();
 const mongosee = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const router = require("./router");
-const app = express();
 require('dotenv/config');
+
+// Import Routes
+const auth = require("./routes/auth");
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/', router);
+
+// Route Middlewares
+app.use('/api/user', auth);
 
 // 404 Not Found
 app.use(function(req, res, next) {

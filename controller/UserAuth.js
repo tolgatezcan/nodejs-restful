@@ -3,7 +3,7 @@ const moment = require('moment');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const fs = require('fs');
-const User = require('../models/User');
+const Users = require('../models/Users');
 const {loginValidation} = require('../models/Validation');
 const {registerValidation} = require('../models/Validation');
 
@@ -15,7 +15,7 @@ exports.login = async function (req, res, next) {
     else {
 
         // Email checking
-        const user = await User.findOne({email: req.body.email});
+        const user = await Users.findOne({email: req.body.email});
         if (!user) res.status(400).json({message: 'Email or password is wrong'});
         else {
 
@@ -38,7 +38,7 @@ exports.register = async function (req, res, next) {
     else {
 
         // Email checking
-        const emailCheck = await User.findOne({email: req.body.email});
+        const emailCheck = await Users.findOne({email: req.body.email});
         if (emailCheck) res.status(400).json({message: 'Email already exists'});
         else {
 
